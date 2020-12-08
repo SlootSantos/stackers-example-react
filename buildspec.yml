@@ -17,3 +17,4 @@ phases:
       - echo "DONE"
       - ls build
       - aws s3 sync build/ s3://lhotse-app-assets-bucket && aws cloudfront create-invalidation --distribution-id="E4TWV5ACWGJQR" --path="/*"
+ 
