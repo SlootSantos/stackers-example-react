@@ -1,0 +1,20 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12
+    commands:
+      - npm i
+  pre_build:
+    commands:
+      - echo "prebuilding?"
+      - npm t
+  build:
+    commands:
+      - npm run build
+  post_build:
+    commands:
+      - echo "DONE"
+      - ls build
+      - aws s3 sync build/ s3://lhotse-app-assets-bucket && aws cloudfront create-invalidation --distribution-id="E4TWV5ACWGJQR" --path="/*"
