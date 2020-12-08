@@ -9,7 +9,6 @@ phases:
   pre_build:
     commands:
       - echo "prebuilding?"
-      - npm t
   build:
     commands:
       - npm run build
